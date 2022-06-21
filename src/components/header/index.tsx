@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleAddTodo = useCallback(() => {
-      if(value ==='') return;
+      if(value === '') return;
       dispatch(addTodo({
         id: uniqid(),
         title: value,
@@ -27,8 +27,8 @@ const Header: React.FC = () => {
 
   return (
     <Container>
-      <TextInput value={value} onChange={({target}) => setValue(target.value)} />
-      <Button onClick={handleAddTodo}>
+      <TextInput role="textbox" value={value} onChange={({target}) => setValue(target.value)} />
+      <Button type="button" onClick={handleAddTodo}>
         <Text>Add</Text>
       </Button>
     </Container>

@@ -21,14 +21,14 @@ const Todo: React.FC<Types.Todo> = ({ title, id, done, save }) => {
     <Container key={id} {...{ done, save }}>
       <Title done={done}>{title}</Title>
       <ControlView>
-        <button onClick={handleFinishTodo}>
+        <button type='button' onClick={handleFinishTodo}>
           {done ? (
-            <ImCheckboxChecked size={20} color="#0a8f1c" />
+            <ImCheckboxChecked size={20} color="#0a8f1c" role="checkbox" />
           ) : (
             <ImCheckboxUnchecked size={20} color="#f0f6fc" />
           )}
         </button>
-        <button onClick={handleDeleteTodo}>
+        <button type='button' onClick={handleDeleteTodo}>
           <FaTrashAlt
             size={20}
             color="#b61515"

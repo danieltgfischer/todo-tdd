@@ -1,7 +1,9 @@
-import { IState, ActionPayload } from './types';
-import { createSlice } from '@reduxjs/toolkit'
+// istanbul ignore file
 
-export const todoSlice = createSlice({
+import { IState, ActionPayload } from './types';
+import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
+
+export const todoSlice = createSlice<IState, SliceCaseReducers<IState>>({
   name: 'todos',
   initialState: {
     todos: []
@@ -15,9 +17,9 @@ export const todoSlice = createSlice({
     },
     finishTodo: (state: IState, { payload }: ActionPayload) => {
       state.todos.forEach(todo => {
-        if (todo.id === payload.id) 
+        if (todo.id === payload.id)
           todo.done = !todo.done
-        
+
       })
     },
     saveTodo: (state: IState, { payload }: ActionPayload) => {
@@ -26,10 +28,13 @@ export const todoSlice = createSlice({
           todo.save = !todo.save
       })
     },
+    clear: (state: IState) => {
+      state.todos = [];
+    },
   }
 })
 
 
-export const { addTodo, finishTodo, removeTodo, saveTodo } = todoSlice.actions
+export const { addTodo, finishTodo, removeTodo, saveTodo, clear } = todoSlice.actions
 
 export default todoSlice.reducer
